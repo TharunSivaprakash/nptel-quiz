@@ -21,6 +21,15 @@ let currentQuestionIndex = 0;
 let userAnswers = [];
 let score = 0;
 
+// Fisher-Yates shuffle algorithm to randomize array
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 function startQuiz() {
     const selectedAssignment = assignmentSelect.value;
     currentQuestions = [];
@@ -37,6 +46,8 @@ function startQuiz() {
                 })));
             }
         });
+        // Shuffle questions when 'All Questions' is selected
+        currentQuestions = shuffleArray(currentQuestions);
         assignmentTitle.textContent = 'All Assignments';
     } else {
         const assignmentIndex = parseInt(selectedAssignment) - 1;
