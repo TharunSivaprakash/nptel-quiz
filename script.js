@@ -46,7 +46,7 @@ function startQuiz() {
                 })));
             }
         });
-        // Shuffle questions when 'All Questions' is selected
+        // Shuffle questions for 'All Questions'
         currentQuestions = shuffleArray(currentQuestions);
         assignmentTitle.textContent = 'All Assignments';
     } else {
@@ -55,6 +55,8 @@ function startQuiz() {
             ...q,
             assignment: assignmentIndex + 1
         }));
+        // Shuffle questions for individual assignment
+        currentQuestions = shuffleArray(currentQuestions);
         assignmentTitle.textContent = `Assignment ${selectedAssignment}`;
     }
 
