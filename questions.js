@@ -1,5 +1,5 @@
 const questions = [
-    // Assignment 1
+    // Assignment 1 (unchanged)
     [
         {
             question: "In the word root for conservation, con stands for",
@@ -52,7 +52,7 @@ const questions = [
             answer: "implicit costs"
         }
     ],
-    // Assignment 2
+    // Assignment 2 (unchanged, Malthusian/sustainability)
     [
         {
             question: "Which of these is not a pillar of sustainability?",
@@ -115,7 +115,7 @@ const questions = [
             answer: "war"
         }
     ],
-    // Assignment 3
+    // Assignment 3 (unchanged)
     [
         {
             question: "____ is used to identify which potential impacts are relevant to assess.",
@@ -168,7 +168,7 @@ const questions = [
             answer: "maladaptation"
         }
     ],
-    // Assignment 4
+    // Assignment 4 (unchanged)
     [
         {
             question: "Which of these is a deterministic factor?",
@@ -221,60 +221,60 @@ const questions = [
             answer: "phytoremediation"
         }
     ],
-    // Assignment 5
+    // Assignment 5 (new questions from your input)
     [
         {
-            question: "Which of these is a pillar of sustainability",
-            options: ["social sustainability", "industrial sustainability", "agricultural sustainability", "trans-boundary sustainability"],
-            answer: "social sustainability"
+            question: "“a measure of the responsiveness of quantity demanded or quantity supplied to a change in one of its determinants” is",
+            options: ["elasticity", "responsivity", "demand-supply equilibrium", "pricing"],
+            answer: "elasticity"
         },
         {
-            question: "According to Malthusian model,",
-            options: ["Population grows in geometric progression, food supply increases in arithmetic progression", "Population grows in geometric progression, food supply increases in geometric progression", "Population grows in arithmetic progression, food supply increases in arithmetic progression", "Population grows in arithmetic progression, food supply increases in geometric progression"],
-            answer: "Population grows in geometric progression, food supply increases in arithmetic progression"
+            question: "“the ability to produce a good using fewer inputs than another producer” is",
+            options: ["comparative advantage", "absolute advantage", "production advantage", "resource advantage"],
+            answer: "absolute advantage"
         },
         {
-            question: "Which of these is a preventive check according to Malthus?",
-            options: ["foresight", "vice", "misery", "flood"],
-            answer: "foresight"
+            question: "Common resource goods are",
+            options: ["excludable, rival in consumption", "non-excludable, rival in consumption", "excludable, non-rival in consumption", "non-excludable, non-rival in consumption"],
+            answer: "non-excludable, rival in consumption"
         },
         {
-            question: "Which of these is a positive check according to Malthus?",
-            options: ["late marriage", "war", "celibacy", "moral restraint"],
-            answer: "war"
+            question: "“If private parties can bargain without cost over the allocation of resources, they can solve the problem of externalities on their own.” This is a statement for",
+            options: ["Allocation theorem", "Phillips theorem", "Coase theorem", "Nash theorem"],
+            answer: "Coase theorem"
         },
         {
-            question: "The Trinity explosion of 1945 is taken as the beginning of the",
-            options: ["Holocene", "Cenocene", "Anthropocene", "Eocene"],
-            answer: "Anthropocene"
+            question: "Development that meets the needs of the present without compromising the ability of future generations to meet their own needs is known as",
+            options: ["Good development", "Sustainable development", "Futuristic development", "Gandhian development"],
+            answer: "Sustainable development"
         },
         {
-            question: "The book \"An Essay on the Principle of Population\" was written by",
-            options: ["Darwin", "Malthus", "Spencer", "Owens"],
-            answer: "Malthus"
+            question: "Club goods are",
+            options: ["excludable, rival in consumption", "non-excludable, rival in consumption", "excludable, non-rival in consumption", "non-excludable, non-rival in consumption"],
+            answer: "excludable, non-rival in consumption"
         },
         {
-            question: "The demographic transition sees a society move from",
-            options: ["high birth rate, low death rate to low birth rate, high death rate", "low birth rate, high death rate to low birth rate, low death rate", "high birth rate, high death rate to low birth rate, low death rate", "high birth rate, high death rate to low birth rate, high death rate"],
-            answer: "high birth rate, high death rate to low birth rate, low death rate"
+            question: "Which of these is not a method of internalisation of externalities?",
+            options: ["tradable pollution permits", "charities to social causes", "command-and-control policies", "free market"],
+            answer: "free market"
         },
         {
-            question: "The quantum of human impacts can be written as",
-            options: ["I = P + A + T", "I = P X A + T", "I = P X A X T", "I = P + A X T"],
-            answer: "I = P X A X T"
+            question: "Private goods are",
+            options: ["excludable, rival in consumption", "non-excludable, rival in consumption", "excludable, non-rival in consumption", "non-excludable, non-rival in consumption"],
+            answer: "excludable, rival in consumption"
         },
         {
-            question: "The logistic growth equation curve is",
-            options: ["I-shaped", "J-shaped", "S-shaped", "U-shaped"],
-            answer: "S-shaped"
+            question: "“a simplified description, especially a mathematical one, of a system or process, to assist calculations and predictions” is the definition of a / an",
+            options: ["equation", "model", "philosophy", "process dynamics"],
+            answer: "model"
         },
         {
-            question: "Which of these is not a pillar of sustainability?",
-            options: ["environmental sustainability", "economic sustainability", "trans-boundary sustainability", "social sustainability"],
-            answer: "trans-boundary sustainability"
+            question: "“the impact of one person’s actions on the well-being of a bystander” is",
+            options: ["actor-observer effect", "externality", "internality", "benefits principle"],
+            answer: "externality"
         }
     ],
-    // Assignment 6
+    // Assignment 6 (unchanged)
     [
         {
             question: "“the claim that, other things being equal, the quantity demanded of a good falls when the price of the good rises” is a statement of",
@@ -327,7 +327,7 @@ const questions = [
             answer: "price elasticity of demand"
         }
     ],
-    // Assignment 7
+    // Assignment 7 (unchanged)
     [
         {
             question: "“the price of a good that prevails in the world market for that good” is the definition of",
@@ -380,7 +380,7 @@ const questions = [
             answer: "producer surplus"
         }
     ],
-    // Assignment 8
+    // Assignment 8 (unchanged)
     [
         {
             question: "For a positive consumption externality,",
@@ -433,7 +433,7 @@ const questions = [
             answer: "SMB = PMB − MD"
         }
     ],
-    // Assignment 9
+    // Assignment 9 (unchanged)
     [
         {
             question: "“costs that have already been committed and cannot be recovered” are",
@@ -486,7 +486,7 @@ const questions = [
             answer: "marginal product"
         }
     ],
-    // Assignment 10
+    // Assignment 10 (unchanged)
     [
         {
             question: "“an absolute level of income set by the government for each family size below which a family is deemed to be in poverty” is known as",
@@ -539,7 +539,7 @@ const questions = [
             answer: "marginal product of labour"
         }
     ],
-    // Assignment 11
+    // Assignment 11 (unchanged)
     [
         {
             question: "“an action taken by an uninformed party to induce an informed party to reveal information” is known as",
@@ -592,7 +592,7 @@ const questions = [
             answer: "heuristics"
         }
     ],
-    // Assignment 12
+    // Assignment 12 (unchanged, wildlife conservation)
     [
         {
             question: "As per Wildlife Protection Act 1972 (WPA 1972), wild life includes any animal, aquatic or land vegetation which forms part of any",
@@ -646,3 +646,4 @@ const questions = [
         }
     ]
 ];
+console.log('questions.js loaded, total assignments:', questions.length);
