@@ -21,7 +21,13 @@ let currentQuestionIndex = 0;
 let userAnswers = [];
 let score = 0;
 
-// Fisher-Yates shuffle algorithm to randomize array
+// Check if questions is defined
+if (typeof questions === 'undefined') {
+    console.error('questions.js not loaded or questions variable undefined');
+    alert('Error: Questions data not loaded. Please check if questions.js is included.');
+}
+
+// Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -31,66 +37,63 @@ function shuffleArray(array) {
 }
 
 function startQuiz() {
-    console.log('startQuiz called'); // Debug: Check if function is triggered
-    const selectedAssignment = assignmentSelect.value;
-    console.log('Selected Assignment:', selectedAssignment); // Debug: Log selection
+    console.log('startQuiz called, selected:', assignmentSelect.value);
     currentQuestions = [];
     userAnswers = [];
     score = 0;
     currentQuestionIndex = 0;
 
+    const selectedAssignment = assignmentSelect.value;
     if (selectedAssignment === 'all') {
-        console.log('Processing All Questions'); // Debug
         questions.forEach((assignment, index) => {
-            if (assignment.length > 0) {
+            if (assignment && assignment.length > 0) {
                 currentQuestions.push(...assignment.map(q => ({
                     ...q,
                     assignment: index + 1
                 })));
             }
         });
-        console.log('Total Questions before shuffle:', currentQuestions.length); // Debug: Should be 120
+        console.log('All Questions loaded:', currentQuestions.length);
         currentQuestions = shuffleArray(currentQuestions);
         assignmentTitle.textContent = 'All Assignments';
     } else {
         const assignmentIndex = parseInt(selectedAssignment) - 1;
-        console.log('Assignment Index:', assignmentIndex); // Debug
         if (questions[assignmentIndex] && questions[assignmentIndex].length > 0) {
             currentQuestions = questions[assignmentIndex].map(q => ({
                 ...q,
                 assignment: assignmentIndex + 1
             }));
-            console.log('Questions for Assignment:', currentQuestions.length); // Debug: Should be 10
+            console.log(`Assignment ${selectedAssignment} loaded:`, currentQuestions.length);
             currentQuestions = shuffleArray(currentQuestions);
             assignmentTitle.textContent = `Assignment ${selectedAssignment}`;
         } else {
-            console.error('No questions found for assignment:', selectedAssignment);
-            alert('Error: No questions available for this assignment.');
+            console.error(`No questions for Assignment ${selectedAssignment}`);
+            alert(`Error: No questions found for Assignment ${selectedAssignment}.`);
             return;
         }
     }
 
-    console.log('Current Questions after shuffle:', currentQuestions); // Debug: Log questions
     if (currentQuestions.length === 0) {
         console.error('No questions loaded');
-        alert('Error: No questions loaded. Please check the questions data.');
+        alert('Error: No questions available. Please check questions.js.');
         return;
     }
 
     startScreen.style.display = 'none';
     quizScreen.style.display = 'block';
+    console.log('Switching to quiz screen');
     displayQuestion();
 }
 
 function displayQuestion() {
-    console.log('displayQuestion called, index:', currentQuestionIndex); // Debug
-    if (!currentQuestions[currentQuestionIndex]) {
-        console.error('No question found at index:', currentQuestionIndex);
-        alert('Error: No question available.');
+    console.log('displayQuestion called, index:', currentQuestionIndex);
+    const question = currentQuestions[currentQuestionIndex];
+    if (!question) {
+        console.error('No question at index:', currentQuestionIndex);
+        alert('Error: Question not found.');
         return;
     }
 
-    const question = currentQuestions[currentQuestionIndex];
     questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
     questionText.textContent = question.question || 'Question text missing';
     optionsDiv.innerHTML = '';
@@ -99,7 +102,7 @@ function displayQuestion() {
 
     if (!question.options || question.options.length === 0) {
         console.error('No options for question:', question);
-        optionsDiv.textContent = 'Error: No options available for this question.';
+        optionsDiv.textContent = 'Error: No options available.';
         return;
     }
 
@@ -110,17 +113,6 @@ function displayQuestion() {
         optionDiv.addEventListener('click', () => selectOption(option, optionDiv));
         if (userAnswers[currentQuestionIndex] === option) {
             optionDiv.classList.add('selected');
-            if (option === question.answer) {
-                optionDiv.classList.add('correct');
-                feedbackDiv.textContent = 'Correct!';
-                feedbackDiv.classList.add('correct');
-                feedbackDiv.style.display = 'block';
-            } else {
-                optionDiv.classList.add('wrong');
-                feedbackDiv.textContent = 'Wrong!';
-                feedbackDiv.classList.add('wrong');
-                feedbackDiv.style.display = 'block';
-            }
         }
         optionsDiv.appendChild(optionDiv);
     });
@@ -130,14 +122,13 @@ function displayQuestion() {
 }
 
 function selectOption(option, optionDiv) {
-    console.log('Option selected:', option); // Debug
+    console.log('Selected option:', option);
     const question = currentQuestions[currentQuestionIndex];
     userAnswers[currentQuestionIndex] = option;
 
-    const siblings = optionDiv.parentElement.children;
-    for (let sibling of siblings) {
+    Array.from(optionDiv.parentElement.children).forEach(sibling => {
         sibling.classList.remove('selected', 'correct', 'wrong');
-    }
+    });
 
     optionDiv.classList.add('selected');
     if (option === question.answer) {
