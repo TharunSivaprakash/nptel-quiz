@@ -324,7 +324,7 @@ const questions = [
         {
             question: "“a measure of how much the quantity demanded of a good responds to a change in the price of that good, computed as the percentage change in quantity demanded divided by the percentage change in price” is",
             options: ["price elasticity of demand", "income elasticity of demand", "cross-price elasticity of demand", "price elasticity of supply"],
- demoralization answer: "price elasticity of demand"
+            answer: "price elasticity of demand"
         }
     ],
     // Assignment 7
