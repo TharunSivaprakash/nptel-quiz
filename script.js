@@ -45,19 +45,15 @@ function startQuiz() {
 
     const selectedAssignment = assignmentSelect.value;
     if (selectedAssignment === 'all') {
-        // Deduplicate questions to ensure no repeats
-        const seenQuestions = new Set();
         questions.forEach((assignment, index) => {
             if (assignment && assignment.length > 0) {
-                assignment.forEach(q => {
-                    if (!seenQuestions.has(q.question)) {
-                        seenQuestions.add(q.question);
-                        currentQuestions.push({ ...q, assignment: index + 1 });
-                    }
-                });
+                currentQuestions.push(...assignment.map(q => ({
+                    ...q,
+                    assignment: index + 1
+                })));
             }
         });
-        console.log('All Questions loaded (deduplicated):', currentQuestions.length); // Should be 110
+        console.log('All Questions loaded:', currentQuestions.length); // Should be 120
         currentQuestions = shuffleArray(currentQuestions); // Shuffle once to avoid repetition
         assignmentTitle.textContent = 'All Assignments';
     } else {
