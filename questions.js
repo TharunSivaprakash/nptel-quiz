@@ -52,8 +52,69 @@ const questions = [
             answer: "implicit costs"
         }
     ],
-    // Assignment 2 (Note: Assignment 2 was not provided, so I'll skip it as per instructions and proceed with Assignment 3)
-    [],
+    // Assignment 2
+    [
+        {
+            question: "Which of these is not a pillar of sustainability?",
+            options: ["environmental sustainability", "economic sustainability", "trans-boundary sustainability", "social sustainability"],
+            answer: "trans-boundary sustainability"
+        },
+        {
+            question: "The Trinity explosion of 1945 is taken as the beginning of the",
+            options: ["Holocene", "Cenocene", "Anthropocene", "Eocene"],
+            answer: "Anthropocene"
+        },
+        {
+            question: "According to Malthusian model,",
+            options: [
+                "Population grows in geometric progression, food supply increases in arithmetic progression",
+                "Population grows in geometric progression, food supply increases in geometric progression",
+                "Population grows in arithmetic progression, food supply increases in arithmetic progression",
+                "Population grows in arithmetic progression, food supply increases in geometric progression"
+            ],
+            answer: "Population grows in geometric progression, food supply increases in arithmetic progression"
+        },
+        {
+            question: "The demographic transition sees a society move from",
+            options: [
+                "high birth rate, low death rate to low birth rate, high death rate",
+                "low birth rate, high death rate to low birth rate, low death rate",
+                "high birth rate, high death rate to low birth rate, low death rate",
+                "high birth rate, high death rate to low birth rate, high death rate"
+            ],
+            answer: "high birth rate, high death rate to low birth rate, low death rate"
+        },
+        {
+            question: "Which of these is a pillar of sustainability",
+            options: ["social sustainability", "industrial sustainability", "agricultural sustainability", "trans-boundary sustainability"],
+            answer: "social sustainability"
+        },
+        {
+            question: "Which of these is a preventive check according to Malthus?",
+            options: ["foresight", "vice", "misery", "flood"],
+            answer: "foresight"
+        },
+        {
+            question: "The quantum of human impacts can be written as",
+            options: ["I = P + A + T", "I = P X A + T", "I = P X A X T", "I = P + A X T"],
+            answer: "I = P X A X T"
+        },
+        {
+            question: "The book \"An Essay on the Principle of Population\" was written by",
+            options: ["Darwin", "Malthus", "Spencer", "Owens"],
+            answer: "Malthus"
+        },
+        {
+            question: "The logistic growth equation curve is",
+            options: ["I-shaped", "J-shaped", "S-shaped", "U-shaped"],
+            answer: "S-shaped"
+        },
+        {
+            question: "Which of these is a positive check according to Malthus?",
+            options: ["late marriage", "war", "celibacy", "moral restraint"],
+            answer: "war"
+        }
+    ],
     // Assignment 3
     [
         {
@@ -263,7 +324,7 @@ const questions = [
         {
             question: "“a measure of how much the quantity demanded of a good responds to a change in the price of that good, computed as the percentage change in quantity demanded divided by the percentage change in price” is",
             options: ["price elasticity of demand", "income elasticity of demand", "cross-price elasticity of demand", "price elasticity of supply"],
-            answer: "price elasticity of demand"
+ demoralization answer: "price elasticity of demand"
         }
     ],
     // Assignment 7
@@ -529,6 +590,59 @@ const questions = [
             question: "“simple strategies or mental processes used to quickly form judgments, make decisions, and find solutions to complex problems” is known as",
             options: ["signalling", "screening", "informing", "heuristics"],
             answer: "heuristics"
+        }
+    ],
+    // Assignment 12
+    [
+        {
+            question: "As per Wildlife Protection Act 1972 (WPA 1972), wild life includes any animal, aquatic or land vegetation which forms part of any",
+            options: ["ecosystem", "state", "country", "habitat"],
+            answer: "habitat"
+        },
+        {
+            question: "The tiger has a home range of several square kilometres, regulates the ecosystem through controlling herbivore populations and trophic cascades, and people come to tiger reserves to watch tigers. Thus, the tiger can be called as",
+            options: ["umbrella species", "keystone species", "flagship species", "all of the above"],
+            answer: "all of the above"
+        },
+        {
+            question: "Soil formation is an example of",
+            options: ["provisioning service", "regulating service", "supporting service", "cultural service"],
+            answer: "supporting service"
+        },
+        {
+            question: "Zoo is an example of",
+            options: ["in-situ conservation", "ex-situ conservation", "in-situ preservation", "ex-situ preservation"],
+            answer: "ex-situ conservation"
+        },
+        {
+            question: "The fig tree bears fruits in times when animals do not have much access to food. In this context, it would be a good example of",
+            options: ["least concern species", "keystone species", "flagship species", "extinct species"],
+            answer: "keystone species"
+        },
+        {
+            question: "Nutrient cycling is an example of",
+            options: ["provisioning service", "regulating service", "supporting service", "cultural service"],
+            answer: "supporting service"
+        },
+        {
+            question: "People come to Sessa orchid sanctuary in Arunachal Pradesh to witness orchids, which in this context would be classified as",
+            options: ["umbrella species", "keystone species", "flagship species", "extinct species"],
+            answer: "flagship species"
+        },
+        {
+            question: "We prefer those areas for the creation of a conservation reserve where the level of threat is",
+            options: ["very high", "medium", "very low", "non-existent"],
+            answer: "medium"
+        },
+        {
+            question: "The elephant has a home range of several square kilometres, regulates the ecosystem by its habit of destructive feeding, and people can relate to this animal which is important for conservation. Given this background, the elephant can be called as",
+            options: ["umbrella species", "keystone species", "flagship species", "all of the above"],
+            answer: "all of the above"
+        },
+        {
+            question: "Biological control of pest populations is an example of",
+            options: ["provisioning service", "regulating service", "supporting service", "cultural service"],
+            answer: "regulating service"
         }
     ]
 ];
