@@ -31,13 +31,16 @@ function shuffleArray(array) {
 }
 
 function startQuiz() {
+    console.log('startQuiz called'); // Debug: Check if function is triggered
     const selectedAssignment = assignmentSelect.value;
+    console.log('Selected Assignment:', selectedAssignment); // Debug: Log selection
     currentQuestions = [];
     userAnswers = [];
     score = 0;
     currentQuestionIndex = 0;
 
     if (selectedAssignment === 'all') {
+        console.log('Processing All Questions'); // Debug
         questions.forEach((assignment, index) => {
             if (assignment.length > 0) {
                 currentQuestions.push(...assignment.map(q => ({
@@ -46,18 +49,32 @@ function startQuiz() {
                 })));
             }
         });
-        // Shuffle questions for 'All Questions'
+        console.log('Total Questions before shuffle:', currentQuestions.length); // Debug: Should be 120
         currentQuestions = shuffleArray(currentQuestions);
         assignmentTitle.textContent = 'All Assignments';
     } else {
         const assignmentIndex = parseInt(selectedAssignment) - 1;
-        currentQuestions = questions[assignmentIndex].map(q => ({
-            ...q,
-            assignment: assignmentIndex + 1
-        }));
-        // Shuffle questions for individual assignment
-        currentQuestions = shuffleArray(currentQuestions);
-        assignmentTitle.textContent = `Assignment ${selectedAssignment}`;
+        console.log('Assignment Index:', assignmentIndex); // Debug
+        if (questions[assignmentIndex] && questions[assignmentIndex].length > 0) {
+            currentQuestions = questions[assignmentIndex].map(q => ({
+                ...q,
+                assignment: assignmentIndex + 1
+            }));
+            console.log('Questions for Assignment:', currentQuestions.length); // Debug: Should be 10
+            currentQuestions = shuffleArray(currentQuestions);
+            assignmentTitle.textContent = `Assignment ${selectedAssignment}`;
+        } else {
+            console.error('No questions found for assignment:', selectedAssignment);
+            alert('Error: No questions available for this assignment.');
+            return;
+        }
+    }
+
+    console.log('Current Questions after shuffle:', currentQuestions); // Debug: Log questions
+    if (currentQuestions.length === 0) {
+        console.error('No questions loaded');
+        alert('Error: No questions loaded. Please check the questions data.');
+        return;
     }
 
     startScreen.style.display = 'none';
@@ -66,6 +83,13 @@ function startQuiz() {
 }
 
 function displayQuestion() {
+    console.log('displayQuestion called, index:', currentQuestionIndex); // Debug
+    if (!currentQuestions[currentQuestionIndex]) {
+        console.error('No question found at index:', currentQuestionIndex);
+        alert('Error: No question available.');
+        return;
+    }
+
     const question = currentQuestions[currentQuestionIndex];
     questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
     questionText.textContent = question.question || 'Question text missing';
@@ -74,6 +98,7 @@ function displayQuestion() {
     feedbackDiv.textContent = '';
 
     if (!question.options || question.options.length === 0) {
+        console.error('No options for question:', question);
         optionsDiv.textContent = 'Error: No options available for this question.';
         return;
     }
@@ -85,7 +110,6 @@ function displayQuestion() {
         optionDiv.addEventListener('click', () => selectOption(option, optionDiv));
         if (userAnswers[currentQuestionIndex] === option) {
             optionDiv.classList.add('selected');
-            // Reapply feedback if already answered
             if (option === question.answer) {
                 optionDiv.classList.add('correct');
                 feedbackDiv.textContent = 'Correct!';
@@ -106,16 +130,15 @@ function displayQuestion() {
 }
 
 function selectOption(option, optionDiv) {
+    console.log('Option selected:', option); // Debug
     const question = currentQuestions[currentQuestionIndex];
     userAnswers[currentQuestionIndex] = option;
 
-    // Clear previous styles
     const siblings = optionDiv.parentElement.children;
     for (let sibling of siblings) {
         sibling.classList.remove('selected', 'correct', 'wrong');
     }
 
-    // Apply new styles
     optionDiv.classList.add('selected');
     if (option === question.answer) {
         optionDiv.classList.add('correct');
