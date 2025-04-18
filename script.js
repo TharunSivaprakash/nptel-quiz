@@ -45,16 +45,20 @@ function startQuiz() {
 
     const selectedAssignment = assignmentSelect.value;
     if (selectedAssignment === 'all') {
+        // Deduplicate questions to ensure no repeats
+        const seenQuestions = new Set();
         questions.forEach((assignment, index) => {
             if (assignment && assignment.length > 0) {
-                currentQuestions.push(...assignment.map(q => ({
-                    ...q,
-                    assignment: index + 1
-                })));
+                assignment.forEach(q => {
+                    if (!seenQuestions.has(q.question)) {
+                        seenQuestions.add(q.question);
+                        currentQuestions.push({ ...q, assignment: index + 1 });
+                    }
+                });
             }
         });
-        console.log('All Questions loaded:', currentQuestions.length);
-        currentQuestions = shuffleArray(currentQuestions);
+        console.log('All Questions loaded (deduplicated):', currentQuestions.length); // Should be 110
+        currentQuestions = shuffleArray(currentQuestions); // Shuffle once to avoid repetition
         assignmentTitle.textContent = 'All Assignments';
     } else {
         const assignmentIndex = parseInt(selectedAssignment) - 1;
@@ -64,7 +68,7 @@ function startQuiz() {
                 assignment: assignmentIndex + 1
             }));
             console.log(`Assignment ${selectedAssignment} loaded:`, currentQuestions.length);
-            currentQuestions = shuffleArray(currentQuestions);
+            currentQuestions = shuffleArray(currentQuestions); // Shuffle once
             assignmentTitle.textContent = `Assignment ${selectedAssignment}`;
         } else {
             console.error(`No questions for Assignment ${selectedAssignment}`);
@@ -81,7 +85,7 @@ function startQuiz() {
 
     startScreen.style.display = 'none';
     quizScreen.style.display = 'block';
-    console.log('Switching to quiz screen');
+    console.log('Switching to quiz screen, next button visible:', nextQuestionBtn.offsetParent !== null);
     displayQuestion();
 }
 
@@ -118,7 +122,9 @@ function displayQuestion() {
     });
 
     prevQuestionBtn.disabled = currentQuestionIndex === 0;
+    nextQuestionBtn.style.display = 'inline-block'; // Ensure Next button is visible
     nextQuestionBtn.textContent = currentQuestionIndex === currentQuestions.length - 1 ? 'Submit' : 'Next';
+    console.log('Next button text:', nextQuestionBtn.textContent);
 }
 
 function selectOption(option, optionDiv) {
@@ -138,11 +144,22 @@ function selectOption(option, optionDiv) {
         feedbackDiv.classList.add('correct');
     } else {
         optionDiv.classList.add('wrong');
-        feedbackDiv.textContent = 'Wrong!';
+        feedbackDiv.textContent = `Wrong! Correct answer: ${question.answer}`;
         feedbackDiv.classList.remove('correct');
         feedbackDiv.classList.add('wrong');
     }
     feedbackDiv.style.display = 'block';
+
+    // Auto-advance to next question after 2 seconds
+    setTimeout(() => {
+        if (currentQuestionIndex < currentQuestions.length - 1) {
+            currentQuestionIndex++;
+            displayQuestion();
+        } else {
+            calculateScore();
+            displayResults();
+        }
+    }, 2000);
 }
 
 function prevQuestion() {
